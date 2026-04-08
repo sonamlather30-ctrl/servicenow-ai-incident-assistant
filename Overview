@@ -1,0 +1,21 @@
+# AI Incident Assistant (ServiceNow + Generative AI)
+
+## Overview
+This project integrates ServiceNow with an AI API to automatically summarize incidents and suggest resolutions.
+
+## Features
+- Incident summarization
+- Resolution suggestion
+- REST API integration
+
+## Tech Stack
+- ServiceNow
+- JavaScript
+- REST API
+
+## Example Input
+User unable to login to VPN, error authentication failed.
+
+## Example Output
+Summary: VPN login issue due to authentication error.
+Suggested Fix: Reset credentials and check VPN configuration.
