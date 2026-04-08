@@ -1,6 +1,11 @@
 // Mock ServiceNow Business Rule
 
-if (current.description) {
-  var summary = "AI summary will be generated here";
-  current.u_ai_summary = summary;
-}
+(function executeRule(current, previous) {
+
+    if (current.description) {
+        // Simulated AI response
+        var summary = "AI-generated summary will be stored here";
+        current.u_ai_summary = summary;
+    }
+
+})(current, previous);
