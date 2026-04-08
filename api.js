@@ -4,6 +4,11 @@ const API_KEY = "your_api_key_here";
 
 async function getAISummary(incident) {
   try {
+    if (!incident) {
+      console.log("No incident provided");
+      return;
+    }
+
     const response = await axios.post(
       "https://api.openai.com/v1/chat/completions",
       {
@@ -23,13 +28,14 @@ async function getAISummary(incident) {
       }
     );
 
-    const result = response.data.choices[0].message.content;
-    console.log("AI Response:\n", result);
+    const aiText = response.data.choices[0].message.content;
+
+    console.log("AI Output:\n", aiText);
 
   } catch (error) {
-    console.error("Error:", error.message);
+    console.error("API Error:", error.response?.data || error.message);
   }
 }
 
 // Test
-getAISummary("User unable to access VPN, authentication failed.");
+getAISummary("VPN not working, authentication failed");
