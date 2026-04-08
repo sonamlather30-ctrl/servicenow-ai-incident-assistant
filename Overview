@@ -1,21 +1,12 @@
-# AI Incident Assistant (ServiceNow + Generative AI)
+## Architecture
+ServiceNow → REST API → AI Model → Response → Update Incident
 
-## Overview
-This project integrates ServiceNow with an AI API to automatically summarize incidents and suggest resolutions.
+## Flow
+1. Incident created
+2. Description sent to AI API
+3. AI generates summary + solution
+4. Output stored in ServiceNow field
 
-## Features
-- Incident summarization
-- Resolution suggestion
-- REST API integration
-
-## Tech Stack
-- ServiceNow
-- JavaScript
-- REST API
-
-## Example Input
-User unable to login to VPN, error authentication failed.
-
-## Example Output
-Summary: VPN login issue due to authentication error.
-Suggested Fix: Reset credentials and check VPN configuration.
+## Error Handling
+- Handles empty input
+- Handles API failure
