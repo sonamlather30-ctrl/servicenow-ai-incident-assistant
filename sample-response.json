@@ -1,0 +1,4 @@
+{
+  "summary": "User facing VPN login issue due to authentication failure.",
+  "solution": "Reset password and verify VPN settings."
+}
