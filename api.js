@@ -4,10 +4,13 @@ const API_KEY = "your_api_key_here";
 
 async function getAISummary(incident) {
   try {
-    if (!incident) {
-      console.log("No incident provided");
+    // Validate input
+    if (!incident || incident.trim() === "") {
+      console.log("❌ No incident description provided");
       return;
     }
+
+    console.log("📩 Sending incident to AI...\n");
 
     const response = await axios.post(
       "https://api.openai.com/v1/chat/completions",
@@ -16,7 +19,10 @@ async function getAISummary(incident) {
         messages: [
           {
             role: "user",
-            content: `Summarize and suggest solution: ${incident}`,
+            content: `You are an IT support assistant.
+Summarize the issue in 1-2 lines and suggest a clear resolution.
+
+Incident: ${incident}`,
           },
         ],
       },
@@ -30,12 +36,14 @@ async function getAISummary(incident) {
 
     const aiText = response.data.choices[0].message.content;
 
-    console.log("AI Output:\n", aiText);
+    console.log("===== ✅ AI RESULT =====");
+    console.log(aiText);
+    console.log("========================");
 
   } catch (error) {
-    console.error("API Error:", error.response?.data || error.message);
+    console.error("❌ API Error:", error.response?.data || error.message);
   }
 }
 
-// Test
-getAISummary("VPN not working, authentication failed");
+// Test input
+getAISummary("User unable to login to VPN, authentication failed");
