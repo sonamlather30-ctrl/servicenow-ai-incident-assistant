@@ -1,1 +1,14 @@
 # servicenow-ai-incident-assistant
+
+## Architecture
+ServiceNow → REST API → AI Model → Response → Update Incident
+
+## Flow
+1. Incident created
+2. Description sent to AI API
+3. AI generates summary + solution
+4. Output stored in ServiceNow field
+
+## Error Handling
+- Handles empty input
+- Handles API failure
